@@ -1,0 +1,244 @@
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 16px; color: #1a1a1a; line-height: 1.5; max-width: 980px; margin: 0 auto;">
+  <div style="text-align: center; border-bottom: 3px solid #1a7040; padding-bottom: 16px; margin-bottom: 20px;">
+    <div style="font-size: 36px; font-weight: 700; color: #1a7040;">Lista de Atividades</div>
+    <div style="font-size: 24px; margin-top: 4px;">Logica de Programacao - Gabarito</div>
+    <div style="font-size: 16px; color: #555; margin-top: 4px;">Turma de ADS - estudos de casos com problemas reais de sistemas</div>
+    <div style="display: inline-block; margin-top: 10px; background: #1a7040; color: #fff; border-radius: 4px; padding: 4px 12px; font-size: 14px;">GABARITO - USO DO PROFESSOR</div>
+  </div>
+
+  <div style="background: #1a7040; color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 20px; font-weight: 700; margin: 20px 0 10px;">Gabarito (1 a 7)</div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">1</span><span style="font-size: 16px; font-weight: 600;">Triagem automatica de tickets com operador de resto</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro numero
+
+		escreva("Digite um numero inteiro: ")
+		leia(numero)
+
+		se (numero % 2 == 0)
+		{
+			escreva("O numero e par")
+		}
+		senao
+		{
+			escreva("O numero e impar")
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">2</span><span style="font-size: 16px; font-weight: 600;">Regra comercial de desconto no fechamento da venda</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		real valor_compra, valor_final
+
+		escreva("Digite o valor da compra: ")
+		leia(valor_compra)
+
+		se (valor_compra &gt;= 500)
+		{
+			valor_final = valor_compra * 0.90
+			escreva("Desconto aplicado. Valor final: ", valor_final)
+		}
+		senao
+		{
+			valor_final = valor_compra
+			escreva("Sem desconto. Valor final: ", valor_final)
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">3</span><span style="font-size: 16px; font-weight: 600;">Alerta de reposicao para evitar ruptura de estoque</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro quantidade
+
+		escreva("Digite a quantidade em estoque: ")
+		leia(quantidade)
+
+		se (quantidade &lt; 20)
+		{
+			escreva("Reposicao necessaria")
+		}
+		senao
+		{
+			escreva("Estoque adequado")
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">4</span><span style="font-size: 16px; font-weight: 600;">Leitura de escala de trabalho por codigo numerico</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro dia
+
+		escreva("Digite um numero de 1 a 7: ")
+		leia(dia)
+
+		escolha (dia)
+		{
+			caso 1:
+				escreva("Domingo")
+			pare
+			caso 2:
+				escreva("Segunda-feira")
+			pare
+			caso 3:
+				escreva("Terca-feira")
+			pare
+			caso 4:
+				escreva("Quarta-feira")
+			pare
+			caso 5:
+				escreva("Quinta-feira")
+			pare
+			caso 6:
+				escreva("Sexta-feira")
+			pare
+			caso 7:
+				escreva("Sabado")
+			pare
+			caso contrario:
+				escreva("Valor invalido")
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">5</span><span style="font-size: 16px; font-weight: 600;">Modulo de calculo rapido para atendimento comercial</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro opcao
+		real a, b, resultado
+
+		escreva("=== Calculadora Simples ===")
+		escreva("1 - Somar")
+		escreva("2 - Subtrair")
+		escreva("3 - Multiplicar")
+		escreva("4 - Dividir")
+		escreva("Escolha a opcao: ")
+		leia(opcao)
+
+		escreva("Digite o primeiro numero: ")
+		leia(a)
+		escreva("Digite o segundo numero: ")
+		leia(b)
+
+		escolha (opcao)
+		{
+			caso 1:
+				resultado = a + b
+				escreva("Resultado: ", resultado)
+			pare
+			caso 2:
+				resultado = a - b
+				escreva("Resultado: ", resultado)
+			pare
+			caso 3:
+				resultado = a * b
+				escreva("Resultado: ", resultado)
+			pare
+			caso 4:
+				se (b != 0)
+				{
+					resultado = a / b
+					escreva("Resultado: ", resultado)
+				}
+				senao
+				{
+					escreva("Nao e possivel dividir por zero")
+				}
+			pare
+			caso contrario:
+				escreva("Opcao invalida")
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">6</span><span style="font-size: 16px; font-weight: 600;">Classificacao de desempenho para relatorio gerencial</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro nota
+		cadeia conceito
+
+		escreva("Digite a nota de 0 a 10: ")
+		leia(nota)
+
+		se (nota &lt; 0 ou nota &gt; 10)
+		{
+			escreva("Nota invalida")
+		}
+		senao
+		{
+			escolha (nota)
+			{
+				caso 10:
+				caso 9:
+					conceito = "A"
+				pare
+				caso 8:
+				caso 7:
+					conceito = "B"
+				pare
+				caso 6:
+					conceito = "C"
+				pare
+				caso 5:
+					conceito = "D"
+				pare
+				caso contrario:
+					conceito = "E"
+			}
+
+			escreva("Conceito final: ", conceito)
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;"><span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">7</span><span style="font-size: 16px; font-weight: 600;">Geracao sequencial para senhas de atendimento</span></div>
+    <div style="padding: 12px;"><pre style="margin: 0; font-family: Consolas, 'Courier New', monospace; font-size: 14px; background: #f6fff9; border: 1px solid #c8e0d0; border-radius: 4px; padding: 10px; white-space: pre-wrap;">programa
+{
+	funcao inicio()
+	{
+		inteiro limite, contador
+
+		escreva("Contar ate qual numero? ")
+		leia(limite)
+
+		contador = 1
+
+		enquanto (contador &lt;= limite)
+		{
+			escreva(contador, " ")
+			contador = contador + 1
+		}
+	}
+}</pre></div>
+  </div>
+
+  <div style="text-align: center; font-size: 12px; color: #888; margin-top: 18px; border-top: 1px solid #c8e0d0; padding-top: 8px;">Gabarito - Logica de Programacao | Publicar apos correcao</div>
+</div>

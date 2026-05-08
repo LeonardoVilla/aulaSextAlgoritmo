@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividades de Algoritmos</title>
+  <style>
+    :root {
+      --bg: #f4f8f6;
+      --card: #ffffff;
+      --ink: #1a1a1a;
+      --muted: #5b6b63;
+      --brand: #1a7040;
+      --line: #c8e0d0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1a7040, #2f8f59);
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px 18px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .hero p {
+      margin: 8px 0 0;
+      opacity: 0.95;
+      line-height: 1.45;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 14px;
+    }
+
+    .status {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .date-group {
+      margin-top: 16px;
+    }
+
+    .date-title {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--brand);
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .item {
+      background: #fbfefd;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .label {
+      font-weight: 600;
+      color: #214633;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .link {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--brand);
+      border-radius: 999px;
+      padding: 6px 10px;
+      white-space: nowrap;
+    }
+
+    .hint {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .error {
+      color: #9a1f1f;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Atividades de Algoritmos</h1>
+      <p>Indice automatico para GitHub Pages. Ao commitar novos arquivos de atividade em HTML, os links entram aqui automaticamente com a data do ultimo commit.</p>
+    </section>
+
+    <section class="panel">
+      <p id="status" class="status">Carregando atividades...</p>
+      <div id="content"></div>
+      <p class="hint">Dica: para manter historico por dia, salve cada nova atividade com nome unico, por exemplo: <strong>atividade_enunciados_2026-05-09.html</strong> e <strong>atividade_gabarito_2026-05-09.html</strong>.</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const statusEl = document.getElementById("status");
+      const contentEl = document.getElementById("content");
+
+      const fallbackOwner = "LeonardoVilla";
+      const fallbackRepo = "aulaSextAlgoritmo";
+      const branch = "main";
+
+      const hostParts = window.location.hostname.split(".");
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+      const owner = hostParts[0] && hostParts[1] === "github" ? hostParts[0] : fallbackOwner;
+      const repo = pathParts[0] || fallbackRepo;
+
+      const apiBase = "https://api.github.com/repos/" + owner + "/" + repo;
+      const pagesBase = "https://" + owner + ".github.io/" + repo;
+
+      function formatDate(isoString) {
+        return new Date(isoString).toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        });
+      }
+
+      function formatDateTime(isoString) {
+        return new Date(isoString).toLocaleString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
+      }
+
+      function safePath(path) {
+        return path.split("/").map(encodeURIComponent).join("/");
+      }
+
+      function buildLabel(path) {
+        const base = path.split("/").pop() || path;
+        if (/gabarito/i.test(base)) return "Gabarito";
+        if (/enunciados?/i.test(base)) return "Enunciados";
+        return "Atividade";
+      }
+
+      function fetchJson(url) {
+        return fetch(url).then(function (res) {
+          if (!res.ok) throw new Error("Falha ao consultar " + url + " (" + res.status + ")");
+          return res.json();
+        });
+      }
+
+      function render(groups) {
+        contentEl.innerHTML = "";
+
+        const dates = Object.keys(groups).sort(function (a, b) {
+          return new Date(b) - new Date(a);
+        });
+
+        dates.forEach(function (dateKey) {
+          const group = groups[dateKey].sort(function (a, b) {
+            return a.path.localeCompare(b.path);
+          });
+
+          const section = document.createElement("section");
+          section.className = "date-group";
+
+          const title = document.createElement("h2");
+          title.className = "date-title";
+          title.textContent = "Atividade do dia " + formatDate(dateKey);
+
+          const list = document.createElement("ul");
+          list.className = "list";
+
+          group.forEach(function (item) {
+            const li = document.createElement("li");
+            li.className = "item";
+
+            const left = document.createElement("div");
+            const label = document.createElement("div");
+            label.className = "label";
+            label.textContent = buildLabel(item.path);
+
+            const meta = document.createElement("div");
+            meta.className = "meta";
+            meta.textContent = item.path + " | commit: " + formatDateTime(item.date);
+
+            left.appendChild(label);
+            left.appendChild(meta);
+
+            const link = document.createElement("a");
+            link.className = "link";
+            link.href = pagesBase + "/" + safePath(item.path);
+            link.textContent = "Abrir";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            li.appendChild(left);
+            li.appendChild(link);
+            list.appendChild(li);
+          });
+
+          section.appendChild(title);
+          section.appendChild(list);
+          contentEl.appendChild(section);
+        });
+      }
+
+      fetchJson(apiBase + "/git/trees/" + branch + "?recursive=1")
+        .then(function (treeData) {
+          const files = (treeData.tree || [])
+            .filter(function (node) {
+              return node.type === "blob" && /atividade.*\.html$/i.test(node.path) && !/index\.html$/i.test(node.path);
+            });
+
+          if (files.length === 0) {
+            statusEl.textContent = "Nenhum arquivo de atividade encontrado.";
+            return;
+          }
+
+          return Promise.all(files.map(function (file) {
+            const url = apiBase + "/commits?path=" + encodeURIComponent(file.path) + "&per_page=1";
+            return fetchJson(url).then(function (commitData) {
+              const first = commitData[0];
+              const date = first && first.commit && first.commit.author && first.commit.author.date;
+              return {
+                path: file.path,
+                date: date || new Date().toISOString()
+              };
+            });
+          })).then(function (items) {
+            const groups = {};
+            items.forEach(function (item) {
+              const key = item.date.slice(0, 10);
+              if (!groups[key]) groups[key] = [];
+              groups[key].push(item);
+            });
+
+            statusEl.textContent = "Atividades carregadas automaticamente do repositorio " + owner + "/" + repo + ".";
+            render(groups);
+          });
+        })
+        .catch(function (err) {
+          statusEl.innerHTML = "<span class=\"error\">Nao foi possivel carregar automaticamente.</span>";
+          const msg = document.createElement("p");
+          msg.className = "hint";
+          msg.textContent = "Erro: " + err.message;
+          contentEl.appendChild(msg);
+        });
+    })();
+  </script>
+</body>
+</html>

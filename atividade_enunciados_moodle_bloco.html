@@ -1,0 +1,122 @@
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 16px; color: #1a1a1a; line-height: 1.5; max-width: 980px; margin: 0 auto;">
+  <div style="text-align: center; border-bottom: 3px solid #1a7040; padding-bottom: 16px; margin-bottom: 20px;">
+    <div style="font-size: 36px; font-weight: 700; color: #1a7040;">Lista de Atividades</div>
+    <div style="font-size: 24px; margin-top: 4px;">Logica de Programacao</div>
+    <div style="font-size: 16px; color: #555; margin-top: 4px;">Turma de ADS - estudos de casos com problemas reais de sistemas</div>
+    <div style="display: inline-block; margin-top: 10px; background: #1a7040; color: #fff; border-radius: 4px; padding: 4px 12px; font-size: 14px;">VERSAO ALUNO - SOMENTE ENUNCIADOS</div>
+  </div>
+
+  <div style="background: #1a7040; color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 20px; font-weight: 700; margin: 20px 0 10px;">Bloco 1 - Condicionais</div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">1</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">SE / SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Triagem automatica de tickets com operador de resto.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma empresa de suporte, houve aumento de chamados e a triagem manual ficou lenta. A equipe decidiu criar um modulo simples para dividir tickets automaticamente entre duas celulas.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler o numero do ticket e decidir para qual fila ele deve ir, usando a verificacao de paridade.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro numero.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> se/senao com operador % para testar se numero % 2 == 0.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> distribuicao inicial de chamados (pares para Equipe A, impares para Equipe B), reduzindo tempo de fila.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">2</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">SE / SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Regra comercial de desconto no fechamento da venda.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma rede varejista, clientes reclamaram de inconsistencias de desconto no caixa. A gestao solicitou uma regra automatica para padronizar o atendimento.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler o valor da compra e aplicar 10% de desconto quando o valor for maior ou igual a 500.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> real valor_compra, valor_final.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> se/senao.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> motor de precificacao em PDV e e-commerce, evitando erro humano na concessao de desconto.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">3</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">SE / SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Alerta de reposicao para evitar ruptura de estoque.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma empresa de distribuicao, um item ficou indisponivel por falha de monitoramento. Para evitar nova ruptura, sera implementado um alerta no sistema de almoxarifado.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler a quantidade atual em estoque e decidir entre "Reposicao necessaria" ou "Estoque adequado".</p>
+      <p><strong style="color:#1a7040;">Valores de referencia:</strong> estoque minimo de 20 unidades. Se quantidade &lt; 20, exiba "Reposicao necessaria"; caso contrario, exiba "Estoque adequado".</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro quantidade.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> se/senao comparando a quantidade com o limite minimo (20).</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> gatilho de compras para reposicao preventiva em centros de distribuicao.</p>
+    </div>
+  </div>
+
+  <div style="background: #1a7040; color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 20px; font-weight: 700; margin: 20px 0 10px;">Bloco 2 - Escolha/Caso</div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">4</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">ESCOLHA</span>
+      <span style="font-size: 16px; font-weight: 600;">Leitura de escala de trabalho por codigo numerico.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma empresa de operacao 24x7, a escala semanal e armazenada no banco como numeros de 1 a 7. O painel precisa mostrar os nomes dos dias para a supervisao.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler um numero de 1 a 7 e exibir o dia da semana correspondente, tratando valores invalidos.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro dia.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> escolha/caso com caso contrario.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> dashboards operacionais de escala, plantao e agenda de equipes.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">5</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">ESCOLHA + SE</span>
+      <span style="font-size: 16px; font-weight: 600;">Modulo de calculo rapido para atendimento comercial.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma empresa de servicos, consultores perdem tempo alternando planilhas para calcular valores em propostas. Foi solicitado um menu unico para calculos basicos.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler opcao de operacao e dois numeros, executar calculo e validar divisao por zero.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro opcao; real a, b, resultado.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> escolha/caso e se/senao para divisao por zero.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> apoio a orcamentos, reajustes e conferencia de contratos em atendimento.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">6</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">MISTO</span>
+      <span style="font-size: 16px; font-weight: 600;">Classificacao de desempenho para relatorio gerencial.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma empresa de tecnologia, o RH precisa consolidar resultados de treinamento em um formato padrao para comparacao entre equipes.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Validar uma nota de 0 a 10 e converter para conceito A, B, C, D ou E.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro nota; cadeia conceito.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> se/senao para validacao e escolha/caso para classificacao.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> indicadores de desempenho em programas de capacitacao corporativa.</p>
+    </div>
+  </div>
+
+  <div style="background: #1a7040; color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 20px; font-weight: 700; margin: 20px 0 10px;">Bloco 3 - Repeticao</div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">7</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">ENQUANTO</span>
+      <span style="font-size: 16px; font-weight: 600;">Geracao sequencial para senhas de atendimento.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em uma central presencial, os atendentes precisaram emitir manualmente senhas numeradas durante falha do sistema principal.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler um limite inteiro e gerar uma sequencia de 1 ate esse valor.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro limite, contador.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> enquanto com incremento do contador.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> emissao de senhas, lotes e etiquetas em processos com repeticao controlada.</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-size: 12px; color: #888; margin-top: 18px; border-top: 1px solid #c8e0d0; padding-top: 8px;">Lista de Atividades - Logica de Programacao | Versao para alunos</div>
+</div>
