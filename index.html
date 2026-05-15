@@ -63,8 +63,45 @@
       font-size: 14px;
     }
 
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 10px 0 4px;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #214633;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
     .date-group {
       margin-top: 16px;
+    }
+
+    .list-group {
+      margin-top: 20px;
+      padding-top: 8px;
+      border-top: 2px solid var(--line);
+    }
+
+    .list-group-title {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: var(--brand);
+      font-weight: 700;
     }
 
     .date-title {
@@ -136,15 +173,18 @@
 
     <section class="panel">
       <p id="status" class="status">Carregando atividades...</p>
+      <div id="filters" class="filters" aria-label="Filtros de lista"></div>
       <div id="content"></div>
-      <p class="hint">Dica: para manter historico por dia, salve cada nova atividade com nome unico, por exemplo: <strong>atividade_enunciados_2026-05-09.html</strong> e <strong>atividade_gabarito_2026-05-09.html</strong>.</p>
+      <p class="hint">Dica: para manter separacao automatica, use <strong>lista2</strong> no nome dos arquivos da segunda lista, por exemplo: <strong>atividade_enunciados_moodle_bloco_lista2.html</strong>.</p>
     </section>
   </main>
 
   <script>
     (function () {
       const statusEl = document.getElementById("status");
+      const filtersEl = document.getElementById("filters");
       const contentEl = document.getElementById("content");
+      let activeFilter = "all";
 
       const fallbackOwner = "LeonardoVilla";
       const fallbackRepo = "aulaSextAlgoritmo";
@@ -188,6 +228,10 @@
         return "Atividade";
       }
 
+      function getListGroup(path) {
+        return /lista2/i.test(path) ? "Lista 2" : "Lista 1";
+      }
+
       function fetchJson(url) {
         return fetch(url).then(function (res) {
           if (!res.ok) throw new Error("Falha ao consultar " + url + " (" + res.status + ")");
@@ -195,59 +239,116 @@
         });
       }
 
-      function render(groups) {
-        contentEl.innerHTML = "";
+      function getListCount(groups, listName) {
+        const listGroups = groups[listName];
+        if (!listGroups) return 0;
 
-        const dates = Object.keys(groups).sort(function (a, b) {
-          return new Date(b) - new Date(a);
+        return Object.keys(listGroups).reduce(function (acc, dateKey) {
+          return acc + listGroups[dateKey].length;
+        }, 0);
+      }
+
+      function createFilterButton(label, value, groups) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "filter-btn";
+        btn.textContent = label;
+        if (activeFilter === value) {
+          btn.classList.add("active");
+        }
+
+        btn.addEventListener("click", function () {
+          activeFilter = value;
+          render(groups);
         });
 
-        dates.forEach(function (dateKey) {
-          const group = groups[dateKey].sort(function (a, b) {
-            return a.path.localeCompare(b.path);
+        return btn;
+      }
+
+      function renderFilterButtons(groups) {
+        filtersEl.innerHTML = "";
+        const lista1Count = getListCount(groups, "Lista 1");
+        const lista2Count = getListCount(groups, "Lista 2");
+        const totalCount = lista1Count + lista2Count;
+
+        filtersEl.appendChild(createFilterButton("Todas (" + totalCount + ")", "all", groups));
+        filtersEl.appendChild(createFilterButton("Lista 1 (" + lista1Count + ")", "Lista 1", groups));
+        filtersEl.appendChild(createFilterButton("Lista 2 (" + lista2Count + ")", "Lista 2", groups));
+      }
+
+      function render(groups) {
+        contentEl.innerHTML = "";
+        renderFilterButtons(groups);
+
+        const listOrder = ["Lista 1", "Lista 2"];
+
+        listOrder.forEach(function (listName) {
+          if (activeFilter !== "all" && activeFilter !== listName) return;
+
+          const listGroups = groups[listName];
+          if (!listGroups || Object.keys(listGroups).length === 0) return;
+
+          const listSection = document.createElement("section");
+          listSection.className = "list-group";
+
+          const listTitle = document.createElement("h2");
+          listTitle.className = "list-group-title";
+          listTitle.textContent = listName;
+          listSection.appendChild(listTitle);
+
+          const dates = Object.keys(listGroups).sort(function (a, b) {
+            return new Date(b) - new Date(a);
           });
 
-          const section = document.createElement("section");
-          section.className = "date-group";
+          dates.forEach(function (dateKey) {
+            const group = listGroups[dateKey].sort(function (a, b) {
+              return a.path.localeCompare(b.path);
+            });
 
-          const title = document.createElement("h2");
-          title.className = "date-title";
-          title.textContent = "Atividade do dia " + formatDate(dateKey);
+            const section = document.createElement("section");
+            section.className = "date-group";
 
-          const list = document.createElement("ul");
-          list.className = "list";
+            const title = document.createElement("h3");
+            title.className = "date-title";
+            title.textContent = "Atividade do dia " + formatDate(dateKey);
 
-          group.forEach(function (item) {
-            const li = document.createElement("li");
-            li.className = "item";
+            const list = document.createElement("ul");
+            list.className = "list";
 
-            const left = document.createElement("div");
-            const label = document.createElement("div");
-            label.className = "label";
-            label.textContent = buildLabel(item.path);
+            group.forEach(function (item) {
+              const li = document.createElement("li");
+              li.className = "item";
 
-            const meta = document.createElement("div");
-            meta.className = "meta";
-            meta.textContent = item.path + " | commit: " + formatDateTime(item.date);
+              const left = document.createElement("div");
+              const label = document.createElement("div");
+              label.className = "label";
+              label.textContent = buildLabel(item.path);
 
-            left.appendChild(label);
-            left.appendChild(meta);
+              const meta = document.createElement("div");
+              meta.className = "meta";
+              meta.textContent = item.path + " | commit: " + formatDateTime(item.date);
 
-            const link = document.createElement("a");
-            link.className = "link";
-            link.href = pagesBase + "/" + safePath(item.path);
-            link.textContent = "Abrir";
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
+              left.appendChild(label);
+              left.appendChild(meta);
 
-            li.appendChild(left);
-            li.appendChild(link);
-            list.appendChild(li);
+              const link = document.createElement("a");
+              link.className = "link";
+              link.href = pagesBase + "/" + safePath(item.path);
+              link.textContent = "Abrir";
+              link.target = "_blank";
+              link.rel = "noopener noreferrer";
+
+              li.appendChild(left);
+              li.appendChild(link);
+              list.appendChild(li);
+            });
+
+            section.appendChild(title);
+            section.appendChild(list);
+            listSection.appendChild(section);
           });
 
-          section.appendChild(title);
-          section.appendChild(list);
-          contentEl.appendChild(section);
+          contentEl.appendChild(listSection);
         });
       }
 
@@ -276,9 +377,11 @@
           })).then(function (items) {
             const groups = {};
             items.forEach(function (item) {
+              const listKey = getListGroup(item.path);
               const key = item.date.slice(0, 10);
-              if (!groups[key]) groups[key] = [];
-              groups[key].push(item);
+              if (!groups[listKey]) groups[listKey] = {};
+              if (!groups[listKey][key]) groups[listKey][key] = [];
+              groups[listKey][key].push(item);
             });
 
             statusEl.textContent = "Atividades carregadas automaticamente do repositorio " + owner + "/" + repo + ".";

@@ -1,0 +1,87 @@
+<div style="font-family: Segoe UI, Arial, sans-serif; font-size: 16px; color: #1a1a1a; line-height: 1.5; max-width: 980px; margin: 0 auto;">
+  <div style="text-align: center; border-bottom: 3px solid #1a7040; padding-bottom: 16px; margin-bottom: 20px;">
+    <div style="font-size: 36px; font-weight: 700; color: #1a7040;">Lista de Atividades</div>
+    <div style="font-size: 24px; margin-top: 4px;">Logica de Programacao - Lista 2</div>
+    <div style="font-size: 16px; color: #555; margin-top: 4px;">Turma de ADS - estruturas de repeticao e decisoes</div>
+    <div style="display: inline-block; margin-top: 10px; background: #1a7040; color: #fff; border-radius: 4px; padding: 4px 12px; font-size: 14px;">VERSAO ALUNO - SOMENTE ENUNCIADOS</div>
+  </div>
+
+  <div style="background: #1a7040; color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 20px; font-weight: 700; margin: 20px 0 10px;">Bloco Unico - Repeticao e Misto</div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">8</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">ENQUANTO + SE/SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Monitoramento manual de temperatura em servidores.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Durante instabilidade no painel de monitoramento, a equipe de infraestrutura precisou registrar leituras manualmente.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler 5 temperaturas e informar para cada leitura se esta em faixa segura ou em alerta.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro contador; real temperatura.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> enquanto para repetir as leituras e se/senao para validar o limite de 70 graus.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> acompanhamento operacional de racks em situacoes de contingencia.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">9</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">PARA</span>
+      <span style="font-size: 16px; font-weight: 600;">Impressao sequencial de etiquetas por lote.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> No centro de distribuicao, lotes de produtos precisam receber identificacao numerada antes da expedicao.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler a quantidade de etiquetas e exibir a numeracao de 1 ate o total informado.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro total, etiqueta.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> para com controle de inicio, fim e incremento.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> rastreabilidade de volumes e separacao de pedidos.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">10</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">PARA + SE/SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Contagem de pares e impares em intervalo numerico.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Um analista precisa distribuir tarefas em lotes pares e impares para balancear equipes de processamento.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler inicio e fim de um intervalo e contar quantos valores sao pares e quantos sao impares.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro inicio, fim, numero, pares, impares.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> para para percorrer o intervalo e se/senao com operador %.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> classificacao de filas e distribuicao automatica de demandas.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">11</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">ENQUANTO + SE/SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Controle de tentativas de login em terminal local.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> Em modo contingencia, o acesso a um sistema interno precisa ser validado localmente com limite de tentativas.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Solicitar senha ate no maximo 3 tentativas e informar se houve acesso liberado ou bloqueado.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro tentativas; cadeia senha; logico autenticado.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> enquanto com condicao composta e se/senao para validar senha.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> regra basica de seguranca para sistemas administrativos.</p>
+    </div>
+  </div>
+
+  <div style="border: 1px solid #c8e0d0; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+    <div style="background: #f0f8f3; border-bottom: 1px solid #c8e0d0; padding: 10px 12px;">
+      <span style="display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: #1a7040; color: #fff; font-size: 13px; font-weight: 700; margin-right: 8px;">12</span>
+      <span style="display: inline-block; background: #d0ede0; color: #1a7040; border-radius: 10px; padding: 2px 8px; font-size: 12px; font-weight: 700; margin-right: 8px;">PARA + SE/SENAO</span>
+      <span style="font-size: 16px; font-weight: 600;">Calculo de media final com decisao de aprovacao.</span>
+    </div>
+    <div style="padding: 12px; font-size: 15px;">
+      <p><strong style="color:#1a7040;">Contexto:</strong> A secretaria precisa processar rapidamente boletins durante fechamento de notas.</p>
+      <p><strong style="color:#1a7040;">Problematica:</strong> Ler 4 notas, calcular a media e informar se o aluno esta aprovado ou reprovado.</p>
+      <p><strong style="color:#1a7040;">Variaveis sugeridas:</strong> inteiro i; real nota, soma, media.</p>
+      <p><strong style="color:#1a7040;">Estrutura exigida:</strong> para para leitura das notas e se/senao para decisao final.</p>
+      <p><strong style="color:#1a7040;">Uso real:</strong> automacao de fechamento academico e consolidador de desempenho.</p>
+    </div>
+  </div>
+
+  <div style="text-align: center; font-size: 12px; color: #888; margin-top: 18px; border-top: 1px solid #c8e0d0; padding-top: 8px;">Lista de Atividades - Logica de Programacao | Lista 2</div>
+</div>
